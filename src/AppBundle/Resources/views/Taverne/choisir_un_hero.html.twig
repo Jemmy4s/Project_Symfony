@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Taverne:choisirUnHero{% endblock %}
+
+{% block body %}
+<h1>Choisir un hero page</h1>
+{% for item in hero %}
+<div class="form-group">
+<form name="fomulaire" method="post" action="/jouerUnHero">
+<div class="radio">
+  <label><input type="radio" name="hero" value="{{item.getId()}}">{{item.getNom()}}</label>
+</div>
+
+{% endfor %}
+
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+{% endblock %}

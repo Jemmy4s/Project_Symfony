@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Message:ecrireMessage{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Message:ecrireMessage page</h1>
+<div class="container">
+    <div class="form-group ">
+    {{ form_start(form) }}
+    <br>
+    {{ form_errors(form) }}
+    <br>
+    <div class="form-group">
+        {{form_row(form.receveur)}}
+
+      <p class="help-block">Destinatere du message</p>
+    </div>
+    <div class="form-group">
+        {{form_row(form.Entete)}}
+    </div>
+    <div class="form-group">
+        {{form_row(form.Texte)}}
+    </div>
+    {{ form_end(form) }}
+    </div>
+</div>
+<br>
+{% endblock %}

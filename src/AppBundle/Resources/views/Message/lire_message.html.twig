@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}({{nbMessage}})BGE :Consulter les messages {% endblock %}
+
+{% block body %}
+<h1>Consulter les messages</h1>
+{% for item in arrayMessage %}
+    <div class="panel panel-default">
+        <div class="panel-heading">[{{item.getDate().format('Y-m-d H:i:s')}}]<br>{{item.getEntete()}}</div>
+        <div class="panel-body">
+            {{item.getTexte()}}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

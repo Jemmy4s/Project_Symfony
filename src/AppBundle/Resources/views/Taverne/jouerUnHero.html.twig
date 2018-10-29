@@ -1,0 +1,136 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+<!-- code source du la page de style :
+http://codepen.io/paularce/pen/oLqqOZ
+-->
+<style>
+$buttonBaseColor: #336699;
+$disableDuration: 15s;
+button.cooldown{
+  background: $buttonBaseColor;
+  min-height: 48px;
+  min-width: 144px;
+  position: relative;
+  margin: 5px;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  padding: 0 15px;
+  font-size: 16px;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+  &:active, &:focus{
+    outline: none;
+  }
+  &:disabled{
+    background: darken($buttonBaseColor, 10%);
+    color: darken(#fff, 15%);
+    cursor: default;
+    box-shadow: inset 3px 3px 10px 0px rgba(0,0,0,0.2);
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      height: 5px;
+      background: darken($buttonBaseColor, 20%);
+      animation: cooldown $disableDuration linear;
+    }
+  }
+}
+
+@keyframes cooldown {
+   0% { width: 100%; }
+   100% { width: 0; }
+}
+
+
+
+
+
+/* layout stuff */
+section{
+  text-align: center;
+  margin-top: 100px;
+  color: #333;
+}
+p{font-size: 12px;}
+</style>
+{% endblock %}
+{% block script %}
+<script>
+$('button.cooldown').click(function(){
+  var btn = $(this);
+  btn.prop('disabled', true);
+  setTimeout(function(){
+    btn.prop('disabled', false);
+  },15000);
+});
+</script>
+{% endblock %}
+{% block title %}Bienvenue{% endblock %}
+{% block body %}
+
+<div class="container-fluid">
+
+<div class="well col-sm-3">
+
+<h2>Fiche personnage </h2>
+<h3> {{hero.getNom()}}</h3>
+<ul>
+    <li>Point d'action : {{hero.getPointAction}};</li>
+    <li>Niveau : {{hero.getNiveau()}}</li>
+    <li>Nourrir :
+    {{ form_start(nourrirform) }}
+    {{ form_widget(nourrirform) }}
+    {{ form_end(nourrirform) }}</li>
+</ul>
+</div>
+<div class="col-sm-3 ">
+<div class="container-fluid well ">
+    <li>    Fer : {{re.getFer()}} </li><br>
+    <li>    Argent : {{re.getArgent()}} </li><br>
+    <li>    Acier : {{re.getAcier()}} </li><br>
+    <li>    Charbon : {{re.getCharbon()}} </li><br>
+    <li>    Energie : {{re.getEnergie()}}</li><br>
+    <li>    Nourriture : {{re.getNourriture()}}</li>
+  </ul>
+</div></div>
+<div class=" well col-sm-3">
+    <li>Comptetence</li>
+    <ul>
+        {% for item in comp %}
+            <li>{{item.getNom()}}  / niv : {{item.getNiveau()}}</li>
+        {% endfor %}
+    </ul>
+    <li> Utiliser une compétence :
+        {{ form_start(co) }}
+        {{ form_widget(co) }}
+        {{ form_end(co) }}
+    </li>
+</div>
+</div>
+<div class="container-fluid">
+<div class=" well col-3">
+    <li>Achat Comptetence</li>
+    <ul><li>
+    {{ form_start(achat) }}
+    {{ form_widget(achat) }}
+    {{ form_end(achat) }}</li>
+    </ul>
+</ul>
+</div>
+</div></div>
+<script>
+$('button.cooldown').click(function(){
+  var btn = $(this);
+  btn.prop('disabled', true);
+  setTimeout(function(){
+    btn.prop('disabled', false);
+  },15000);
+});
+</script>
+</div>
+{% endblock %}

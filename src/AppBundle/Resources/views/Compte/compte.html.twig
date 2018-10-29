@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+<h1>Compte</h1>
+Avatar Actuel :
+<img href="{{avatar.getImage()}}">
+<a href="{{ asset('uploads/image/' ~ avatar.image) }}">Regarder</a>
+<br>
+{{ form_start(form) }}
+<br>
+    {{ form_row(form.image) }}
+<br>
+{{ form_end(form) }}
+<!--
+<a href=" asset('uploads/image/' ~ avatar.image) }}">View brochure (PDF)</a>
+-->
+{% endblock %}

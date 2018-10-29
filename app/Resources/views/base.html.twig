@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+      <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <meta charset="UTF-8" />
+        <title>{% block title %}Best game ever{% endblock %}</title>
+        {% block stylesheets %}
+    <!--
+        <style>
+        body {
+            background-image : url(http://www.imgbase.info/images/safe-wallpapers/miscellaneous/steampunk/13128_steampunk.jpg);
+            background-repeat:no-repeatdisplay: compact;
+        }
+        </style>
+    -->
+    {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block script %}
+    {% endblock %}
+        <nav class="navbar navbar-inverse visible-xs">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Game</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="/taverne">Taverne</a></li>
+                <li><a href="/village">Village</a></li>
+                <li><a href="/Formation">Message</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="row affix-row">
+            <div class="col-sm-3 col-md-2 affix-sidebar">
+        		<div class="sidebar-nav">
+          <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-collapse collapse sidebar-navbar-collapse">
+              <ul class="nav navbar-nav" id="sidenav01">
+                <li class="active">
+                  <a href="/" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
+                  <h4>
+                  BGE
+                  <br>
+                  <small>Best Game Ever <span class="caret"></span></small>
+                  </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
+                  <span class="glyphicon glyphicon-cloud"></span> Taverne <span class="caret pull-right"></span>
+                  </a>
+                  <div class="collapse" id="toggleDemo" style="height: 0px;">
+                    <ul class="nav nav-list">
+                      <li><a href="/taverne">Allez boire un coup</a></li>
+                      <li><a href="/choisirUnHero">Choisir un Hero</a></li>
+                      <li><a href="/creerUnHero">Creer un hero</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="active">
+                  <a href="#" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
+                  <span class="glyphicon glyphicon-inbox"></span> Message<span class="caret pull-right"></span>
+                  <!--
+                    sizeof($this->getDoctrine()->getRepository('AppBundle:Message')
+                    ->findByReceveur($this->getUser()->getId()));
+                  %}-->
+                  </a>
+                  <div class="collapse" id="toggleDemo2" style="height: 0px;">
+                    <ul class="nav nav-list">
+                      <li><a href="{{path ('ecrireMessage') }}">Ecrire un message</a></li>
+                      <li><a href="{{path ('lireMessage')}}">Consulter les messages</a></li>
+
+                    </ul>
+                  </div>
+                </li>
+                <li><a href="/village"><span class="glyphicon glyphicon-lock"></span> Village</a></li>
+                <li><a href="/evenement"><span class="glyphicon glyphicon-calendar"></span> Evenement <span class="badge pull-right"></span></a></li>
+                <li><a href="/compte"><span class="glyphicon glyphicon-cog"></span> Compte</a></li>
+              </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        	</div>
+
+    <div class="col-sm-9 col-md-10 affix-content">
+        <div class="container">
+
+        {% block body %}
+        {% endblock %}
+
+        {% block javascripts %}
+    <!--    <script>
+
+          $("button1").click(function (){$("#plouf").hide();});
+          $("#a").on({
+            mouseover : $("#a").text("1 000 000"),
+            mouseleave : $("#a").text("Trop tard")
+          })
+        </script>-->
+        {% endblock %}
+        {% block bottom %}
+        <!--navbar-fixed-bottom -->
+    </div>
+    </div>
+    </div>
+<!--
+        <div class="container-fluid col-sm-12">
+          <nav class="navbar-bottom" role="navigation">
+          <ul class="nav navbar-nav">
+            <li>    Fer : XX </li>
+            <li>    Argent : XX </li>
+            <li>    Acier : XX </li>
+            <li>    Charbon : XX </li>
+            <li>    Energie : XX</li>
+            <li>    Nourriture : XX</li>
+          </ul>
+      </nav>
+    </div>
+    !-->
+      {% endblock %}
+    </body>
+</html>
